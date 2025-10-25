@@ -42,6 +42,7 @@ services:
     environment:
       - DEBUG=${DEBUG:-False}
       - SECRET_KEY=${SECRET_KEY:-your-secret-key-change-this-in-production}
+      - BACKEND_CORS_ORIGINS=["http://localhost:3000","http://localhost:5173","http://localhost:8000"]
       - POSTGRES_SERVER=postgres
       - POSTGRES_USER=${POSTGRES_USER:-saas_camera_user}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-your-password-here}

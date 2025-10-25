@@ -107,35 +107,30 @@ A production-ready SaaS platform for real-time shoplifting detection using YOLOv
 
 ## Development Setup
 
-### Backend Development
+For detailed development setup instructions, including local development, Docker setup, and troubleshooting, see [DEVELOPMENT_SETUP.md](DEVELOPMENT_SETUP.md).
 
+### Quick Local Development
+
+**Backend:**
 ```bash
 cd backend
-
-# Create virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Set up database
 alembic upgrade head
-
-# Run development server
 uvicorn app.main:app --reload
 ```
 
-### Frontend Development
-
+**Frontend:**
 ```bash
 cd frontend
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
+```
+
+**Note:** Make sure PostgreSQL and Redis are running locally, or start them with Docker:
+```bash
+docker-compose up -d postgres redis
 ```
 
 ## Project Structure
@@ -313,6 +308,34 @@ npm run test
 
 ## Troubleshooting
 
+### Authentication Errors (ERR_EMPTY_RESPONSE)
+
+If you see `ERR_EMPTY_RESPONSE` or connection errors when trying to login/register:
+
+1. **Verify backend is running:**
+   ```bash
+   curl http://localhost:8000/health
+   ```
+   Should return: `{"status":"healthy",...}`
+
+2. **Check .env files exist:**
+   ```bash
+   ls backend/.env frontend/.env
+   ```
+   If missing, they should have been created automatically. See [DEVELOPMENT_SETUP.md](DEVELOPMENT_SETUP.md) for details.
+
+3. **Verify services are running:**
+   - **Docker mode:** `docker-compose ps` (all services should be "Up")
+   - **Local mode:** Check PostgreSQL (`pg_isready`) and Redis (`redis-cli ping`)
+
+4. **Check CORS configuration:**
+   Ensure `backend/.env` includes:
+   ```
+   BACKEND_CORS_ORIGINS=["http://localhost:3000","http://localhost:5173","http://localhost:8000"]
+   ```
+
+For more detailed troubleshooting, see [DEVELOPMENT_SETUP.md](DEVELOPMENT_SETUP.md#troubleshooting).
+
 ### Webcam Access Issues
 
 **Linux**: Add user to video group
@@ -328,7 +351,7 @@ devices:
 
 ### Database Connection Issues
 
-1. Check PostgreSQL is running: `docker ps`
+1. Check PostgreSQL is running: `docker ps` or `pg_isready`
 2. Verify credentials in `.env`
 3. Check database logs: `docker logs ai_camera_postgres`
 
