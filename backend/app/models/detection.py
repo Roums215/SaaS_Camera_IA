@@ -24,7 +24,7 @@ class Detection(Base):
     bbox_y2 = Column(Float, nullable=True)
 
     # Additional metadata
-    metadata = Column(JSON, nullable=True)
+    extra_data = Column(JSON, nullable=True)
 
     # Image/Video reference
     image_path = Column(String, nullable=True)

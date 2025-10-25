@@ -14,7 +14,7 @@ class DetectionCreate(DetectionBase):
     bbox_y1: Optional[float] = None
     bbox_x2: Optional[float] = None
     bbox_y2: Optional[float] = None
-    metadata: Optional[Dict[str, Any]] = None
+    extra_data: Optional[Dict[str, Any]] = None
     image_path: Optional[str] = None
     video_path: Optional[str] = None
 
@@ -31,7 +31,7 @@ class DetectionResponse(DetectionBase):
     bbox_y1: Optional[float] = None
     bbox_x2: Optional[float] = None
     bbox_y2: Optional[float] = None
-    metadata: Optional[Dict[str, Any]] = None
+    extra_data: Optional[Dict[str, Any]] = None
     image_path: Optional[str] = None
     video_path: Optional[str] = None
     is_false_positive: bool

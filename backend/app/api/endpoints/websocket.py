@@ -152,7 +152,7 @@ async def websocket_camera_stream(
                         bbox_y1=detection_data["bbox"]["y1"],
                         bbox_x2=detection_data["bbox"]["x2"],
                         bbox_y2=detection_data["bbox"]["y2"],
-                        metadata=detection_data
+                        extra_data=detection_data
                     )
                     db.add(detection)
                     db.flush()
