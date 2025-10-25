@@ -45,27 +45,48 @@ A production-ready SaaS platform for real-time shoplifting detection using YOLOv
 
 ### Installation
 
+#### Linux / macOS
+
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
    cd SaaS_Camera_IA
    ```
 
-2. **Set up environment variables**
+2. **Start with one command**
    ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
+   ./start.sh
    ```
 
-3. **Start with Docker Compose**
-   ```bash
-   docker-compose up -d
-   ```
-
-4. **Access the application**
+3. **Access the application**
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:8000
    - API Documentation: http://localhost:8000/docs
+
+#### Windows
+
+1. **Clone the repository**
+   ```powershell
+   git clone <repository-url>
+   cd SaaS_Camera_IA
+   ```
+
+2. **Enable PowerShell scripts (first time only)**
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+
+3. **Start the application**
+   ```powershell
+   .\start.ps1
+   ```
+
+4. **Access the application**
+   - Browser will open automatically to http://localhost:3000
+   - Backend API: http://localhost:8000
+   - API Documentation: http://localhost:8000/docs
+
+**For detailed Windows setup, see [WINDOWS_SETUP.md](WINDOWS_SETUP.md)**
 
 ### First Time Setup
 
