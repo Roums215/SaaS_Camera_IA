@@ -20,7 +20,7 @@ if (-not (Get-Command docker-compose -ErrorAction SilentlyContinue)) {
 }
 
 if ($Service -eq "all") {
-    Write-Host "📜 Showing logs for all services..." -ForegroundColor Yellow
+    Write-Host "Showing logs for all services..." -ForegroundColor Yellow
     if ($Follow) {
         Write-Host "Press Ctrl+C to stop following logs" -ForegroundColor Gray
         Write-Host ""
@@ -29,7 +29,7 @@ if ($Service -eq "all") {
         Invoke-Expression "$dockerCompose logs --tail=100"
     }
 } else {
-    Write-Host "📜 Showing logs for $Service..." -ForegroundColor Yellow
+    Write-Host "Showing logs for $Service..." -ForegroundColor Yellow
     if ($Follow) {
         Write-Host "Press Ctrl+C to stop following logs" -ForegroundColor Gray
         Write-Host ""

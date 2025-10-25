@@ -15,20 +15,20 @@ if (-not (Get-Command docker-compose -ErrorAction SilentlyContinue)) {
 }
 
 # Stop services
-Write-Host "🛑 Stopping all services..." -ForegroundColor Yellow
+Write-Host "Stopping all services..." -ForegroundColor Yellow
 try {
     Invoke-Expression "$dockerCompose down"
 
     if ($LASTEXITCODE -eq 0) {
         Write-Host ""
-        Write-Host "✓ All services stopped successfully" -ForegroundColor Green
+        Write-Host "[OK] All services stopped successfully" -ForegroundColor Green
     } else {
         Write-Host ""
-        Write-Host "⚠️  Some services may not have stopped properly" -ForegroundColor Yellow
+        Write-Host "[!] Some services may not have stopped properly" -ForegroundColor Yellow
     }
 } catch {
     Write-Host ""
-    Write-Host "❌ Error stopping services: $_" -ForegroundColor Red
+    Write-Host "[X] Error stopping services: $_" -ForegroundColor Red
 }
 
 Write-Host ""
